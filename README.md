@@ -24,9 +24,9 @@ npm test           # 30 tests: engine, logic, and a jsdom smoke suite
 |---|---|
 | **Live saleroom** | Every lot opens in sequence, rival bidders act on private valuations, the window tightens as the bidding climbs, and the hammer falls. |
 | **You can bid** | One‑click bids at the next increment, or a standing limit the desk executes on your behalf, one increment at a time. |
-| **Light & dark** | Gilded paper by day, gallery noir by night. Follows the system preference, remembers your choice, and paints before first frame (no flash). |
-| **Generative artwork** | All sixteen lot images are drawn on `<canvas>` from a seed. **Zero image requests**, zero broken thumbnails, no bandwidth. |
-| **Effects** | Cursor‑driven 3D card tilt, gold dust in the air, a film‑grain plate, aurora washes, a gilt sweep, and a full‑screen *hammer moment* when a lot falls to you. |
+| **Light & dark** | Gallery noir by default, a clean daylight viewing on request. Remembers your choice and paints before first frame (no flash). |
+| **Generative artwork** | All sixteen lot images are drawn on `<canvas>` from a seed, cooled into the mint palette. **Zero image requests**, zero broken thumbnails. |
+| **Effects** | Neon‑glow figures, **click‑to‑copy on every price**, a restrained 3D card tilt, drifting mint motes, mint/violet aurora washes, and a full‑screen *hammer moment* when a lot falls to you. |
 | **The rest of the house** | A searchable catalogue, an operations desk with a live wire, the Conditions of Sale, and a `⌘K` command palette. |
 
 Keyboard: `⌘K` / `Ctrl‑K` palette · `/` search · `B` bid · `←` `→` move between lots · `Esc` close · `⌘P` print (the catalogue is print‑styled).
@@ -35,15 +35,23 @@ Keyboard: `⌘K` / `Ctrl‑K` palette · `/` search · `B` bid · `←` `→` mo
 
 ## Design
 
-The visual language is an auction catalogue that learned to breathe: **Fraunces**
-(the variable display face, using its `SOFT`, `WONK` and optical‑size axes),
-**Inter** for text, **JetBrains Mono** for figures — because prices should align.
+An English saleroom, lit like a developer tool.
 
-The palette is built from the room itself: vellum and gilt, oxblood sealing wax,
-and a deep botanical green for the dark mode's gallery walls. Everything is
-expressed as CSS custom properties in `src/styles/tokens.css`, so both moods are
-one attribute apart (`data-theme="light|dark"`), and there is exactly one place
-to change a colour.
+**Dark is the house mood** — near‑black ground, **neon mint** accents, a violet
+second voice — with a clean daylight viewing in light mode. Type is geometric and
+tight (**Inter Tight** for display, **Inter** for text), with **JetBrains Mono**
+on every figure so prices align. **Fraunces** survives as the editorial accent:
+the wordmark, lot titles, the saleroom's copy.
+
+The signature effect is **neon glow** on live figures, plus the utility‑tool
+gesture the whole thing is modelled on: **hover a figure, click to copy it**.
+Prices, lot references and your paddle all copy to the clipboard.
+
+Everything is expressed as CSS custom properties in `src/styles/tokens.css`, so
+both moods are one attribute apart (`data-theme="dark|light"`), and there is
+exactly one place to change a colour. The old gold tokens are aliased to mint, so
+retuning the house palette is a handful of lines rather than a sweep through
+every rule.
 
 ---
 

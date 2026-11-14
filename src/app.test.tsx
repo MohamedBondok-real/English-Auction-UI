@@ -92,12 +92,13 @@ describe('Martlet app', () => {
     expect(grid().queryByText('The Martlet Codex')).toBeNull();
   });
 
-  it('toggles the mood between light and dark', async () => {
+  it('toggles the mood, dark being the house default', async () => {
     const { fireEvent } = await import('@testing-library/dom');
     await mount();
-    const toggle = screen.getByRole('button', { name: /switch to dark mode/i });
-    fireEvent.click(toggle);
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    const toggle = screen.getByRole('button', { name: /switch to light mode/i });
+    fireEvent.click(toggle);
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 
   it('opens a lot and shows its bidding panel', async () => {
@@ -111,6 +112,23 @@ describe('Martlet app', () => {
     expect(dialog).toBeTruthy();
     expect(within(dialog).getByText(/Live bidding/i)).toBeTruthy();
     expect(within(dialog).getByRole('tab', { name: /Provenance/i })).toBeTruthy();
+  });
+
+  it('copies a lot reference to the clipboard', async () => {
+    const { fireEvent } = await import('@testing-library/dom');
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
+    });
+    await mount();
+    const grid = within(document.querySelector('#lots') as HTMLElement);
+    const copyLot002 = grid.getByRole('button', { name: /copy Lot 2 reference/i });
+    await act(async () => {
+      fireEvent.click(copyLot002);
+    });
+    expect(writeText).toHaveBeenCalledWith('Lot 002');
+    expect(copyLot002.getAttribute('aria-label')).toMatch(/copied to clipboard/i);
   });
 
   it('opens the command palette with the keyboard', async () => {

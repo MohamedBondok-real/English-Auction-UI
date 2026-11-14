@@ -9,6 +9,7 @@ import { gbp, gbpShort } from '../lib/format';
 import { LotArt } from './LotArt';
 import { Countdown, CountdownBar } from './Countdown';
 import { Sparkline } from './Sparkline';
+import { CopyValue } from './CopyValue';
 import { IconArrowUpRight, IconStar } from './icons';
 
 interface Props {
@@ -107,9 +108,13 @@ export const LotCard = memo(function LotCard({ lot, variant = 'standard', onOpen
           <IconStar size={15} filled={isWatched} />
         </button>
 
-        <span className="lotcard__lot mono" aria-hidden="true">
+        <CopyValue
+          value={`Lot ${String(lot.number).padStart(3, '0')}`}
+          label={`Lot ${lot.number} reference`}
+          className="lotcard__lot"
+        >
           {String(lot.number).padStart(3, '0')}
-        </span>
+        </CopyValue>
 
         {leading && (
           <span className="lotcard__ribbon">
@@ -135,9 +140,17 @@ export const LotCard = memo(function LotCard({ lot, variant = 'standard', onOpen
             <span className="lotcard__pricelabel smallcaps">
               {isSold ? 'Hammer' : isPassed ? 'Bought in' : 'Current bid'}
             </span>
-            <span className="lotcard__price num" key={`${sale.currentBid}-${sale.stage}`}>
+            <span className="lotcard__price num glow-text" key={`${sale.currentBid}-${sale.stage}`}>
               {sale.currentBid > 0 ? gbp(sale.currentBid) : gbp(lot.openingBid)}
             </span>
+            <CopyValue
+              value={String(sale.currentBid > 0 ? sale.currentBid : lot.openingBid)}
+              label={`the price of Lot ${lot.number}`}
+              variant="bare"
+              className="lotcard__copy"
+            >
+              Copy
+            </CopyValue>
             <span className="lotcard__meta mono">
               {sale.bidCount === 0 ? 'No bids yet' : `${sale.bidCount} bid${sale.bidCount === 1 ? '' : 's'}`}
               {sale.stage !== 'upcoming' && sale.reserveMet && ' · reserve met'}

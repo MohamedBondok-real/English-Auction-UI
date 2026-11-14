@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
       name="description"
       content="Martlet, London. An English auction in the open ascending manner — sixteen lots, live bidding, the fall of the hammer. A demonstration saleroom built in TypeScript."
     />
-    <meta name="theme-color" content="#f3ede2" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -23,13 +23,14 @@
         try {
           var stored = localStorage.getItem('martlet.theme');
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+          // The house is dark by default; light is the daylight viewing.
+          var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'dark';
           var root = document.documentElement;
           root.setAttribute('data-theme', theme);
           root.style.colorScheme = theme;
           document
             .querySelector('meta[name="theme-color"]')
-            .setAttribute('content', theme === 'dark' ? '#0c0f0d' : '#f3ede2');
+            .setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#fafafa');
         } catch (e) {}
       })();
     </script>

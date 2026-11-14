@@ -20,9 +20,9 @@ interface ThemeCtx {
 const Ctx = createContext<ThemeCtx | null>(null);
 
 function readInitial(): Theme {
-  if (typeof document === 'undefined') return 'light';
+  if (typeof document === 'undefined') return 'dark';
   const attr = document.documentElement.getAttribute('data-theme');
-  return attr === 'dark' ? 'dark' : 'light';
+  return attr === 'light' ? 'light' : 'dark';
 }
 
 function apply(theme: Theme) {
@@ -30,7 +30,7 @@ function apply(theme: Theme) {
   root.setAttribute('data-theme', theme);
   root.style.colorScheme = theme;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b0e0c' : '#f2ece1');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#fafafa');
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

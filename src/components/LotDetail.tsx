@@ -9,6 +9,7 @@ import { gbp, gbpShort, hhmm, timeAgo } from '../lib/format';
 import { nextIncrement } from '../lib/increments';
 import { LotArt } from './LotArt';
 import { Countdown, CountdownBar } from './Countdown';
+import { CopyValue } from './CopyValue';
 import { useNowSeconds } from '../state/hooks';
 import {
   IconArrowRight,
@@ -360,7 +361,7 @@ export function LotDetail({ lotId, onClose, onNavigate }: Props) {
             </div>
 
             <div className="bidpanel__amount" key={sale.currentBid}>
-              <span className="bidpanel__figure num">
+              <span className="bidpanel__figure num glow-text">
                 {sale.currentBid > 0 ? gbp(sale.currentBid) : gbp(lot.openingBid)}
               </span>
               <span className="bidpanel__caption">
@@ -482,9 +483,10 @@ export function LotDetail({ lotId, onClose, onNavigate }: Props) {
             </div>
 
             <div className="bidpanel__foot">
-              <span className="mono">
-                Paddle {PLAYER.paddle} · {gbpShort(sale.currentBid || lot.openingBid)}
-              </span>
+              <CopyValue value={String(PLAYER.paddle)} label="your paddle number" variant="bare">
+                Paddle {PLAYER.paddle}
+              </CopyValue>
+              <span className="mono">{gbpShort(sale.currentBid || lot.openingBid)}</span>
               <span className="mono">Session {hhmm(now)}</span>
             </div>
           </aside>

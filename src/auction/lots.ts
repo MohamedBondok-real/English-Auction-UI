@@ -1,22 +1,22 @@
 import type { Lot, Palette } from './types';
 
 const P = {
-  vellum: { bg: '#efe3c8', ink: '#3b2a14', a: '#a8431b', b: '#9a7526', c: '#1f3d3a' },
-  silver: { bg: '#dfe3e2', ink: '#26302f', a: '#b8c2be', b: '#8b9a94', c: '#c9a35f' },
-  lagoon: { bg: '#1e3a45', ink: '#e8dcc4', a: '#c97a3e', b: '#5d8fa3', c: '#22343f' },
-  noir: { bg: '#141419', ink: '#efe6d0', a: '#c9a35f', b: '#6f4a8e', c: '#d9d4c8' },
-  rose: { bg: '#f2e9df', ink: '#3a2a2a', a: '#c95f7a', b: '#4f8a6b', c: '#d8a24a' },
-  brass: { bg: '#2a2418', ink: '#e9d7a8', a: '#c9a35f', b: '#8a6a2f', c: '#5e7a72' },
-  mahogany: { bg: '#5a3226', ink: '#f0e2cf', a: '#a85c3b', b: '#2f4a3f', c: '#caa46a' },
-  charcoal: { bg: '#cfc8b8', ink: '#2b2721', a: '#7a6d57', b: '#3f3a31', c: '#b08d5a' },
-  garnet: { bg: '#1b130e', ink: '#f0dfb6', a: '#9a2b24', b: '#c9a35f', c: '#e0c58f' },
-  emerald: { bg: '#10251f', ink: '#f3e8cc', a: '#c9a35f', b: '#2f6b58', c: '#e07a45' },
-  walnut: { bg: '#3d2c1d', ink: '#f1e6cf', a: '#c9a35f', b: '#6d8a7c', c: '#8a5a34' },
-  cosmic: { bg: '#0d1117', ink: '#dfe8ef', a: '#8aa6c0', b: '#c9a35f', c: '#3b4a5a' },
-  bidjar: { bg: '#5c2320', ink: '#f0ddb0', a: '#1f3d3a', b: '#c9a35f', c: '#d2703f' },
-  inkblue: { bg: '#e9e2d2', ink: '#1f2a3a', a: '#33507a', b: '#9a7526', c: '#a8431b' },
-  primary: { bg: '#e9e4d8', ink: '#1b1b1b', a: '#c0392b', b: '#2b5f9e', c: '#d9a400' },
-  lacquer: { bg: '#3d1512', ink: '#f3e2c4', a: '#c0392b', b: '#c9a35f', c: '#7a2018' },
+  vellum: { bg: '#12140f', ink: '#e7e9e2', a: '#00e5a0', b: '#7c6bf5', c: '#b6fde4' },
+  silver: { bg: '#121416', ink: '#e6e8ea', a: '#a9b4bb', b: '#00e5a0', c: '#5cf7c4' },
+  lagoon: { bg: '#0d1a1c', ink: '#dfe8e6', a: '#00e5a0', b: '#2f7d86', c: '#7c6bf5' },
+  noir: { bg: '#0c0d0f', ink: '#e9e9ee', a: '#00e5a0', b: '#7c6bf5', c: '#d4d4d8' },
+  rose: { bg: '#1a1214', ink: '#efe6e8', a: '#ff7a9c', b: '#00e5a0', c: '#a396ff' },
+  brass: { bg: '#101412', ink: '#e8f0ec', a: '#00e5a0', b: '#4a5f57', c: '#b6fde4' },
+  mahogany: { bg: '#1a1210', ink: '#ede6e4', a: '#8a5a48', b: '#00e5a0', c: '#7c6bf5' },
+  charcoal: { bg: '#16181a', ink: '#e6e8ea', a: '#8e99a1', b: '#00e5a0', c: '#5cf7c4' },
+  garnet: { bg: '#120b0e', ink: '#ece4e8', a: '#e0455f', b: '#00e5a0', c: '#b6fde4' },
+  emerald: { bg: '#0a1512', ink: '#e4efe9', a: '#00e5a0', b: '#1f6b58', c: '#7c6bf5' },
+  walnut: { bg: '#141210', ink: '#eae6e2', a: '#00e5a0', b: '#5c6b64', c: '#a396ff' },
+  cosmic: { bg: '#0a0e14', ink: '#dfe8ef', a: '#00e5a0', b: '#7c6bf5', c: '#a396ff' },
+  bidjar: { bg: '#151011', ink: '#ece6e6', a: '#1f6b58', b: '#00e5a0', c: '#d2703f' },
+  inkblue: { bg: '#0e1218', ink: '#e2e8ef', a: '#5b7fae', b: '#00e5a0', c: '#7c6bf5' },
+  primary: { bg: '#121315', ink: '#e8e8ea', a: '#00e5a0', b: '#3b76c4', c: '#7c6bf5' },
+  lacquer: { bg: '#160b0c', ink: '#eae0e1', a: '#c0392b', b: '#00e5a0', c: '#7c6bf5' },
 } satisfies Record<string, Palette>;
 
 export const LOTS: readonly Lot[] = [

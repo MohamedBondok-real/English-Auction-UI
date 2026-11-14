@@ -4,6 +4,7 @@ import { useNow, useRaf, useStats } from '../state/hooks';
 import { engine } from '../auction/engine';
 import { gbp, gbpShort, longDate, num } from '../lib/format';
 import { LotArt } from './LotArt';
+import { CopyValue } from './CopyValue';
 import { Countdown, CountdownBar } from './Countdown';
 import { IconArrowRight, IconGavel, IconStar } from './icons';
 import { useToggleWatch, useWatched } from '../state/watchlist';
@@ -28,7 +29,7 @@ export function Hero() {
 
           <h1 className="hero__title">
             <span className="hero__title-line">The</span>
-            <span className="hero__title-line hero__title-line--italic">Gilded</span>
+            <span className="hero__title-line hero__title-line--accent">Gilded</span>
             <span className="hero__title-line">
               Hour<span className="hero__title-mark">.</span>
             </span>
@@ -194,13 +195,20 @@ function HeroHud() {
       </div>
 
       <div className="hud__bid" key={flash}>
-        <span className="hud__amount num">{sale.currentBid > 0 ? gbp(sale.currentBid) : gbp(HERO_LOT.openingBid)}</span>
-        <span className="hud__bidmeta mono">
+        <span className="hud__amount num glow-text">
+          {sale.currentBid > 0 ? gbp(sale.currentBid) : gbp(HERO_LOT.openingBid)}
+        </span>
+        <CopyValue
+          value={String(sale.currentBid > 0 ? sale.currentBid : HERO_LOT.openingBid)}
+          label="the current bid"
+          variant="bare"
+          className="hud__copy"
+        >
           {sale.bidCount === 0
             ? 'Opening bid invited'
             : `${sale.bidCount} bid${sale.bidCount === 1 ? '' : 's'}`}
           {sale.leader && ` · Paddle ${sale.leader.paddle}`}
-        </span>
+        </CopyValue>
       </div>
 
       <CountdownBar deadline={sale.closesAt} windowMs={sale.windowMs} />

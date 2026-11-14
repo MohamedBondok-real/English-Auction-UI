@@ -18,7 +18,7 @@
   .modal__scrim {
     position: absolute;
     inset: 0;
-    background: color-mix(in srgb, #0a0805 62%, transparent);
+    background: color-mix(in srgb, #060607 72%, transparent);
     backdrop-filter: blur(10px) saturate(1.1);
     -webkit-backdrop-filter: blur(10px) saturate(1.1);
     animation: fade-in 0.3s var(--ease-out);
@@ -581,7 +581,7 @@
   .cmdk__scrim {
     position: absolute;
     inset: 0;
-    background: color-mix(in srgb, #0a0805 55%, transparent);
+    background: color-mix(in srgb, #060607 62%, transparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     animation: fade-in 0.2s var(--ease-out);

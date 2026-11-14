@@ -30,13 +30,22 @@
     transform: translateY(0) scale(0.985);
   }
   .btn--primary {
-    background: linear-gradient(160deg, var(--ink) 0%, var(--ink-soft) 100%);
-    color: var(--bg);
+    background: var(--mint);
+    color: #001a12;
     border-color: transparent;
+    font-weight: 650;
+    box-shadow: var(--glow-soft);
   }
-  [data-theme='dark'] .btn--primary {
-    background: linear-gradient(160deg, var(--gilt-2) 0%, var(--gilt) 100%);
-    color: #1a1207;
+  [data-theme='light'] .btn--primary {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .btn--primary:hover {
+    background: var(--mint-2);
+    box-shadow: var(--glow-accent);
+  }
+  [data-theme='light'] .btn--primary:hover {
+    background: var(--accent-strong);
   }
   .btn--primary::after {
     content: '';
@@ -77,12 +86,16 @@
     width: 100%;
     justify-content: space-between;
     border-color: transparent;
-    background: linear-gradient(150deg, var(--accent) 0%, var(--accent-strong) 100%);
-    color: var(--accent-ink);
-    box-shadow: 0 8px 24px -12px var(--accent);
+    background: linear-gradient(150deg, var(--mint) 0%, var(--mint-deep) 100%);
+    color: #001a12;
+    font-weight: 650;
+    box-shadow: var(--glow-accent);
   }
   .btn--bid:hover {
-    box-shadow: 0 12px 32px -12px var(--accent);
+    box-shadow: 0 0 0 1px rgba(0, 229, 160, 0.5), 0 10px 34px -8px rgba(0, 229, 160, 0.6);
+  }
+  .btn--bid .num {
+    font-weight: 600;
   }
   .btn--bid .num {
     font-size: 0.78rem;
@@ -93,7 +106,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--live);
+    background: var(--signal);
     box-shadow: 0 0 0 0 var(--live-soft);
     animation: live-pulse 2s var(--ease-out) infinite;
     flex-shrink: 0;
@@ -107,19 +120,19 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--live);
+    background: var(--mint);
     animation: live-pulse 1.8s var(--ease-out) infinite;
     flex-shrink: 0;
   }
   @keyframes live-pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(178, 58, 38, 0.45);
+      box-shadow: 0 0 0 0 rgba(0, 229, 160, 0.5);
     }
     70% {
-      box-shadow: 0 0 0 7px rgba(178, 58, 38, 0);
+      box-shadow: 0 0 0 7px rgba(0, 229, 160, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(178, 58, 38, 0);
+      box-shadow: 0 0 0 0 rgba(0, 229, 160, 0);
     }
   }
 
@@ -141,9 +154,13 @@
     white-space: nowrap;
   }
   .chip--gilt {
-    color: var(--gilt);
-    border-color: var(--gilt);
-    background: var(--gilt-wash);
+    color: var(--mint);
+    border-color: color-mix(in srgb, var(--mint) 45%, transparent);
+    background: var(--accent-soft);
+  }
+  [data-theme='light'] .chip--gilt {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
   }
   .chip--stage.chip--open,
   .chip--stage.chip--going {
@@ -235,7 +252,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.24rem;
-    color: #f6efe2;
+    color: #f4f4f5;
   }
   .spotlight__eyebrow {
     font-size: 0.62rem;
@@ -264,7 +281,7 @@
     display: grid;
     place-items: center;
     border-radius: 50%;
-    color: #f6efe2;
+    color: #f4f4f5;
     background: rgba(12, 9, 5, 0.4);
     border: 1px solid rgba(246, 239, 226, 0.26);
     backdrop-filter: blur(10px);
@@ -277,9 +294,10 @@
     background: rgba(12, 9, 5, 0.6);
   }
   .spotlight__watch.is-watched {
-    color: #1a1207;
-    background: var(--gilt-2);
+    color: #001a12;
+    background: var(--mint);
     border-color: transparent;
+    box-shadow: var(--glow-soft);
   }
   .spotlight__dots {
     position: absolute;
@@ -382,16 +400,20 @@
     margin-top: 0.15rem;
     padding: 0.62rem 0.85rem;
     border-radius: var(--r-md);
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--mint);
+    color: #001a12;
     font-size: var(--step--1);
-    font-weight: 550;
+    font-weight: 650;
     transition: gap var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out),
-      transform var(--dur-1) var(--ease-snap);
+      transform var(--dur-1) var(--ease-snap), box-shadow var(--dur-2) var(--ease-out);
+    box-shadow: var(--glow-soft);
   }
-  [data-theme='dark'] .hud__cta {
-    background: var(--gilt-2);
-    color: #1a1207;
+  [data-theme='light'] .hud__cta {
+    background: var(--accent);
+    color: #fff;
+  }
+  .hud__cta:hover {
+    box-shadow: var(--glow-accent);
   }
   .hud__cta:hover {
     gap: 0.85rem;
@@ -589,9 +611,15 @@
     transform: translateY(-1px);
   }
   .cat-chip.is-active {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--mint);
+    color: #001a12;
     border-color: transparent;
+    font-weight: 600;
+    box-shadow: var(--glow-soft);
+  }
+  [data-theme='light'] .cat-chip.is-active {
+    background: var(--accent);
+    color: #fff;
   }
   .cat-chip__count {
     font-size: 0.64rem;
@@ -658,7 +686,7 @@
   }
   .lotcard {
     transform-style: preserve-3d;
-    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
     transition: transform 0.35s var(--ease-out), box-shadow var(--dur-2) var(--ease-out),
       border-color var(--dur-2) var(--ease-out);
   }
@@ -667,8 +695,12 @@
       border-color var(--dur-2) var(--ease-out);
   }
   .lotcard:hover {
-    border-color: var(--line-strong);
-    box-shadow: var(--shadow-2);
+    border-color: color-mix(in srgb, var(--mint) 42%, var(--line-strong));
+    box-shadow: var(--shadow-2), var(--glow-soft);
+  }
+  .lotcard.is-leading {
+    border-color: var(--mint);
+    box-shadow: var(--shadow-2), var(--glow-accent);
   }
   .lotcard__glare {
     position: absolute;
@@ -678,27 +710,16 @@
     opacity: 0;
     background: radial-gradient(
       circle at var(--glare-x, 50%) var(--glare-y, 50%),
-      rgba(255, 255, 255, 0.22),
-      transparent 42%
+      color-mix(in srgb, var(--mint) 26%, transparent),
+      transparent 46%
     );
-    mix-blend-mode: soft-light;
     transition: opacity var(--dur-2) var(--ease-out);
   }
   .lotcard[data-tilting='true'] .lotcard__glare {
     opacity: 1;
   }
-  [data-theme='dark'] .lotcard__glare {
-    mix-blend-mode: screen;
-    background: radial-gradient(
-      circle at var(--glare-x, 50%) var(--glare-y, 50%),
-      rgba(240, 215, 165, 0.13),
-      transparent 46%
-    );
-  }
-  .lotcard.is-leading {
-    border-color: var(--win);
-    box-shadow: var(--shadow-2), 0 0 0 1px var(--win);
-  }
+
+
   .lotcard__hit {
     position: absolute;
     inset: 0;
@@ -730,7 +751,7 @@
     display: grid;
     place-items: center;
     border-radius: 50%;
-    color: #f6efe2;
+    color: #f4f4f5;
     background: rgba(12, 9, 5, 0.32);
     border: 1px solid rgba(246, 239, 226, 0.24);
     backdrop-filter: blur(8px);
@@ -743,9 +764,10 @@
     background: rgba(12, 9, 5, 0.55);
   }
   .lotcard__watch.is-watched {
-    color: #1a1207;
-    background: var(--gilt-2);
+    color: #001a12;
+    background: var(--mint);
     border-color: transparent;
+    box-shadow: var(--glow-soft);
   }
   .lotcard__lot {
     position: absolute;
@@ -767,15 +789,15 @@
     gap: 0.35rem;
     padding: 0.3rem 0.7rem;
     border-top-left-radius: var(--r-md);
-    background: var(--win);
-    color: #06130f;
+    background: var(--mint);
+    color: #001a12;
     font-size: 0.63rem;
     font-weight: 650;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
   .lotcard__ribbon .live-dot {
-    background: #06130f;
+    background: #001a12;
     animation: none;
   }
   .lotcard__body {
@@ -962,14 +984,14 @@
   .lot-art__frame {
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), inset 0 0 60px -20px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 70px -24px rgba(0, 0, 0, 0.5);
     pointer-events: none;
   }
   .lot-art--live .lot-art__pulse {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 244, 214, 0.16) 48%, transparent 62%);
+    background: linear-gradient(115deg, transparent 35%, rgba(0, 229, 160, 0.2) 48%, transparent 62%);
     transform: translateX(-100%);
     animation: sweep 4.6s var(--ease-in-out) infinite;
   }
@@ -1043,8 +1065,13 @@
     background: var(--surface-2);
   }
   .speedctl__speed.is-active {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--mint);
+    color: #001a12;
+    font-weight: 600;
+  }
+  [data-theme='light'] .speedctl__speed.is-active {
+    background: var(--accent);
+    color: #fff;
   }
   .stat-strip {
     display: grid;
@@ -1703,7 +1730,7 @@
     overflow: hidden;
   }
   [data-theme='dark'] .footer {
-    background: linear-gradient(to bottom, var(--bg), #080a09);
+    background: linear-gradient(to bottom, var(--bg), #070708);
   }
   .footer__top {
     display: grid;
@@ -1943,10 +1970,10 @@
     text-align: center;
     padding: clamp(1.8rem, 5vw, 3.4rem) clamp(1.4rem, 5vw, 3.6rem);
     border-radius: var(--r-xl);
-    border: 1px solid rgba(232, 205, 153, 0.36);
+    border: 1px solid rgba(0, 229, 160, 0.3);
     background: linear-gradient(160deg, rgba(32, 24, 12, 0.94), rgba(14, 11, 6, 0.96));
     box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    color: #f4ead6;
+    color: #f4f4f5;
     animation: hammer-card 0.7s var(--ease-spring);
     max-width: min(92vw, 480px);
   }
@@ -1969,9 +1996,9 @@
     width: 58px;
     height: 58px;
     border-radius: 50%;
-    color: #1a1207;
-    background: radial-gradient(circle at 35% 30%, #f7e8c8, #d9b478 60%, #a9813f);
-    box-shadow: 0 0 0 8px rgba(217, 180, 120, 0.12), 0 0 60px rgba(217, 180, 120, 0.4);
+    color: #001a12;
+    background: radial-gradient(circle at 35% 30%, #b6fde4, #00e5a0 60%, #00b37c);
+    box-shadow: 0 0 0 8px rgba(0, 229, 160, 0.1), 0 0 70px rgba(0, 229, 160, 0.45);
     margin-bottom: 0.6rem;
     animation: icon-strike 0.9s 0.15s var(--ease-spring) both;
   }
@@ -1989,14 +2016,14 @@
     }
   }
   .hammer__eyebrow {
-    color: #d9b478;
-    letter-spacing: 0.24em;
+    color: var(--mint);
+    letter-spacing: 0.2em;
   }
   .hammer__amount {
     font-size: clamp(2.2rem, 7vw, 3.6rem);
     line-height: 1;
     letter-spacing: -0.05em;
-    background: linear-gradient(100deg, #f7e8c8, #d9b478 45%, #f0ddb0 70%, #b8934f);
+    background: linear-gradient(100deg, #b6fde4, #00e5a0 45%, #5cf7c4 70%, #00b37c);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -2010,14 +2037,14 @@
   }
   .hammer__lot {
     font-size: var(--step--1);
-    color: #e8dcc4;
+    color: #d4d4d8;
     font-family: var(--font-display);
     font-style: italic;
     max-width: 30ch;
   }
   .hammer__note {
     font-size: 0.66rem;
-    color: rgba(232, 220, 196, 0.6);
+    color: rgba(212, 212, 216, 0.6);
     margin-top: 0.4rem;
     letter-spacing: 0.04em;
   }
@@ -2027,7 +2054,7 @@
     left: 0;
     height: 2px;
     width: 100%;
-    background: linear-gradient(90deg, #d9b478, #f0ddb0);
+    background: linear-gradient(90deg, #00b37c, #5cf7c4);
     transform-origin: left;
     animation: hammer-countdown 5.2s linear forwards;
     opacity: 0.7;
@@ -2039,5 +2066,154 @@
     to {
       transform: scaleX(0);
     }
+  }
+
+  /* ————————————————————— click to copy ————————————————————— */
+  .copy {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    border-radius: var(--r-xs);
+    transition: color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .copy__text {
+    white-space: nowrap;
+  }
+  .copy__glyph {
+    display: inline-flex;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+  }
+  .copy:hover .copy__glyph,
+  .copy:focus-visible .copy__glyph {
+    opacity: 0.75;
+    transform: none;
+  }
+  .copy:hover {
+    color: var(--accent);
+  }
+  .copy.is-copied {
+    color: var(--accent);
+  }
+  .copy.is-copied .copy__glyph {
+    opacity: 1;
+    transform: none;
+    color: var(--accent);
+  }
+  /* a mint pulse sweeps across the value on success */
+  .copy__flash {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent, var(--accent-soft) 45%, transparent);
+    transform: translateX(-110%);
+    pointer-events: none;
+  }
+  .copy.is-copied .copy__flash {
+    animation: copy-sweep 0.6s var(--ease-out);
+  }
+  @keyframes copy-sweep {
+    to {
+      transform: translateX(110%);
+    }
+  }
+  .copy--chip {
+    padding: 0.14rem 0.42rem;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    font-size: 0.66rem;
+  }
+  .copy--chip:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+    background: var(--surface-3);
+  }
+  .copy--chip.is-copied {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .copy--bare {
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+    padding: 0;
+    color: inherit;
+    opacity: 0.62;
+  }
+  .copy--bare:hover,
+  .copy--bare.is-copied {
+    opacity: 1;
+  }
+
+  /* the card's lot reference is a copy chip sitting on the artwork */
+  .lotcard__lot {
+    position: absolute;
+    left: 0.7rem;
+    bottom: 0.6rem;
+    z-index: 5;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    padding: 0.16rem 0.44rem;
+    border-radius: var(--r-xs);
+    color: #f4f4f5;
+    background: rgba(10, 10, 10, 0.42);
+    border: 1px solid rgba(246, 239, 226, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-shadow: none;
+  }
+  .lotcard__lot:hover {
+    color: #001a12;
+    background: var(--mint);
+    border-color: transparent;
+  }
+  .lotcard__lot.is-copied {
+    color: #001a12;
+    background: var(--mint);
+    border-color: transparent;
+  }
+  .lotcard__copy {
+    display: inline-flex;
+    margin-top: 0.16rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+  .hud__copy {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .hud__copy:hover {
+    color: var(--accent);
+  }
+
+  /* ————————————————————— the hero's mint headline ————————————————————— */
+  .hero__title-line--accent {
+    color: var(--mint);
+    text-shadow: 0 0 44px color-mix(in srgb, var(--mint) 30%, transparent);
+  }
+  [data-theme='light'] .hero__title-line--accent {
+    color: var(--accent);
+    text-shadow: none;
+  }
+  .hero__title {
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+  .hero__title-line {
+    font-family: var(--font-display);
+  }
+  /* the saleroom's editorial voice, kept for the wordmark and lot titles */
+  .brand__name,
+  .footer__wordmark {
+    font-family: var(--font-serif);
+    font-variation-settings: 'SOFT' 40, 'WONK' 1, 'opsz' 144;
+    letter-spacing: -0.03em;
   }
 }
