@@ -155,6 +155,13 @@ export const IconBolt = ({ size, ...p }: IconProps) => (
   </svg>
 );
 
+export const IconCopy = ({ size, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <rect x="9" y="9" width="11" height="11" rx="2.2" />
+    <path d="M15 6.5V5.2A2.2 2.2 0 0 0 12.8 3H5.2A2.2 2.2 0 0 0 3 5.2v7.6A2.2 2.2 0 0 0 5.2 15h1.3" />
+  </svg>
+);
+
 export const IconCommand = ({ size, ...p }: IconProps) => (
   <svg {...base(size)} {...p}>
     <path d="M8.5 4a2.5 2.5 0 1 0 0 5h7a2.5 2.5 0 1 0 0-5M8.5 20a2.5 2.5 0 1 1 0-5h7a2.5 2.5 0 1 1 0 5M9 9v6M15 9v6" />

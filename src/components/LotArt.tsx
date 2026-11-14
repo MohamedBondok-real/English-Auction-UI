@@ -466,6 +466,11 @@ export function shade(hex: string, amount: number): string {
   return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
 }
 
+function luminance(hex: string): number {
+  const { r, g, b } = parseHex(hex);
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+}
+
 function parseHex(hex: string): { r: number; g: number; b: number } {
   let h = hex.replace('#', '');
   if (h.length === 3) h = h.split('').map((c) => c + c).join('');
@@ -490,11 +495,27 @@ export function renderArt(spec: Spec, width: number, height: number, dpr = 1): H
   paintGround(ctx, width, height, spec.palette, rng);
   PAINTERS[spec.variant](ctx, width, height, spec.palette, rng);
 
-  // vignette — the vitrine
-  const vg = ctx.createRadialGradient(width / 2, height / 2, Math.min(width, height) * 0.25, width / 2, height / 2, Math.max(width, height) * 0.78);
+  // vignette — the vitrine. Key on luminance, not on a guessed hex prefix.
+  const groundIsLight = luminance(spec.palette.bg) > 0.6;
+  const vg = ctx.createRadialGradient(
+    width / 2,
+    height / 2,
+    Math.min(width, height) * 0.25,
+    width / 2,
+    height / 2,
+    Math.max(width, height) * 0.78,
+  );
   vg.addColorStop(0, 'rgba(0,0,0,0)');
-  vg.addColorStop(1, alpha(spec.palette.bg.startsWith('#f') ? '#2a1c0c' : '#000000', 0.34));
+  vg.addColorStop(1, alpha(groundIsLight ? '#1a1a1c' : '#000000', groundIsLight ? 0.26 : 0.42));
   ctx.fillStyle = vg;
+  ctx.fillRect(0, 0, width, height);
+
+  // a mint rim-light, so every plate reads as part of the room
+  const rim = ctx.createLinearGradient(0, 0, width, height);
+  rim.addColorStop(0, alpha(spec.palette.c, 0.14));
+  rim.addColorStop(0.45, alpha(spec.palette.c, 0));
+  rim.addColorStop(1, alpha(spec.palette.a, 0.12));
+  ctx.fillStyle = rim;
   ctx.fillRect(0, 0, width, height);
 
   if (cache.size >= CACHE_LIMIT) {

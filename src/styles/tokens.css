@@ -2,11 +2,14 @@
   :root {
     /* ————————————————————————————————
        Martlet design tokens
-       Light: gilded paper · Dark: gallery noir
+       Identity: an English saleroom, lit like a developer tool.
+       Dark is the house mood; light is the daylight viewing.
+       Accents: neon mint · violet · signal red
     ———————————————————————————————— */
 
-    --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+    --font-display: 'Inter Tight Variable', 'Inter Tight', 'Inter Variable', system-ui, sans-serif;
     --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-serif: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
     --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
 
     /* fluid type scale */
@@ -31,12 +34,12 @@
     --sp-9: 6rem;
     --gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem);
 
-    /* radii */
+    /* radii — flatter, more like a utility tool */
     --r-xs: 4px;
-    --r-sm: 7px;
+    --r-sm: 8px;
     --r-md: 12px;
-    --r-lg: 18px;
-    --r-xl: 26px;
+    --r-lg: 16px;
+    --r-xl: 22px;
     --r-pill: 999px;
 
     /* motion */
@@ -56,108 +59,134 @@
     --z-modal: 120;
 
     --shell: min(1560px, 100% - 2 * var(--gutter));
+
+    /* ————— brand accents, shared by both moods ————— */
+    --mint: #00e5a0;
+    --mint-2: #5cf7c4;
+    --mint-3: #b6fde4;
+    --mint-deep: #00b37c;
+    --violet: #7c6bf5;
+    --violet-2: #a396ff;
+    --signal: #ff5d5d;
   }
 
+  /* ═══════════════════════════════════════════
+     THE HOUSE (dark — the default mood)
+  ═══════════════════════════════════════════ */
   :root,
-  [data-theme='light'] {
-    --bg: #f2ece1;
-    --bg-tint: #e8dfd0;
-    --surface: #fbf8f2;
-    --surface-2: #f5efe4;
-    --surface-3: #eee6d8;
-    --glass: rgba(251, 248, 242, 0.72);
-    --glass-strong: rgba(251, 248, 242, 0.9);
+  [data-theme='dark'] {
+    --bg: #0a0a0a;
+    --bg-tint: #0f0f10;
+    --surface: #121213;
+    --surface-2: #171719;
+    --surface-3: #1e1e21;
+    --glass: rgba(14, 14, 15, 0.72);
+    --glass-strong: rgba(14, 14, 15, 0.92);
 
-    --ink: #17140f;
-    --ink-soft: #3c352c;
-    --muted: #6e6558;
-    --faint: #9a9080;
+    --ink: #f4f4f5;
+    --ink-soft: #c9c9cf;
+    --muted: #8e8e97;
+    --faint: #63636c;
 
-    --line: rgba(23, 20, 15, 0.13);
-    --line-strong: rgba(23, 20, 15, 0.24);
-    --line-glow: rgba(255, 255, 255, 0.7);
+    --line: rgba(244, 244, 245, 0.1);
+    --line-strong: rgba(244, 244, 245, 0.2);
+    --line-glow: rgba(255, 255, 255, 0.05);
 
-    --accent: #a8431b;
-    --accent-strong: #8c3412;
-    --accent-soft: rgba(168, 67, 27, 0.1);
-    --accent-ink: #fff8f1;
+    --accent: var(--mint);
+    --accent-strong: var(--mint-2);
+    --accent-soft: rgba(0, 229, 160, 0.12);
+    --accent-ink: #001a12;
 
-    --gilt: #9a7526;
-    --gilt-2: #c9a35f;
-    --gilt-3: #f0ddb0;
-    --gilt-wash: rgba(154, 117, 38, 0.09);
+    --gilt: var(--mint);
+    --gilt-2: var(--mint-2);
+    --gilt-3: var(--mint-3);
+    --gilt-wash: rgba(0, 229, 160, 0.08);
 
-    --sage: #2f6b58;
-    --sage-soft: rgba(47, 107, 88, 0.1);
+    --sage: var(--violet-2);
+    --sage-soft: rgba(124, 107, 245, 0.14);
 
-    --live: #b23a26;
-    --live-soft: rgba(178, 58, 38, 0.1);
-    --win: #2f6b58;
-    --win-soft: rgba(47, 107, 88, 0.12);
+    --live: #ff6b6b;
+    --live-soft: rgba(255, 107, 107, 0.14);
+    --win: var(--mint);
+    --win-soft: rgba(0, 229, 160, 0.14);
 
-    --shadow-1: 0 1px 0 var(--line-glow) inset, 0 1px 2px rgba(35, 26, 12, 0.06),
-      0 8px 24px -12px rgba(35, 26, 12, 0.18);
-    --shadow-2: 0 1px 0 var(--line-glow) inset, 0 2px 6px rgba(35, 26, 12, 0.06),
-      0 24px 60px -28px rgba(35, 26, 12, 0.3);
-    --shadow-pop: 0 1px 0 var(--line-glow) inset, 0 4px 10px rgba(35, 26, 12, 0.08),
-      0 40px 80px -32px rgba(35, 26, 12, 0.36);
+    --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 1px 2px rgba(0, 0, 0, 0.6),
+      0 8px 24px -14px rgba(0, 0, 0, 0.9);
+    --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 2px 6px rgba(0, 0, 0, 0.55),
+      0 24px 60px -30px rgba(0, 0, 0, 0.95);
+    --shadow-pop: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 4px 12px rgba(0, 0, 0, 0.6),
+      0 44px 90px -38px rgba(0, 0, 0, 1);
 
-    --grain-opacity: 0.05;
-    --grain-blend: multiply;
-    --aurora-1: rgba(201, 163, 95, 0.55);
-    --aurora-2: rgba(168, 67, 27, 0.22);
-    --aurora-3: rgba(47, 107, 88, 0.18);
-    --spot: rgba(255, 251, 240, 0.55);
+    /* neon: the one signature effect */
+    --glow-accent: 0 0 0 1px rgba(0, 229, 160, 0.34), 0 6px 26px -8px rgba(0, 229, 160, 0.5);
+    --glow-soft: 0 0 24px -6px rgba(0, 229, 160, 0.35);
+
+    --grain-opacity: 0;
+    --grain-blend: overlay;
+    --aurora-1: rgba(0, 229, 160, 0.16);
+    --aurora-2: rgba(124, 107, 245, 0.16);
+    --aurora-3: rgba(0, 229, 160, 0.09);
+    --spot: rgba(0, 229, 160, 0.06);
+    --dust: rgba(0, 229, 160, 0.5);
+    --card-sheen: rgba(0, 229, 160, 0.1);
+    --scrim: rgba(6, 6, 7, 0.72);
   }
 
-  [data-theme='dark'] {
-    --bg: #0b0e0c;
-    --bg-tint: #0f1411;
-    --surface: #131815;
-    --surface-2: #171d19;
-    --surface-3: #1e2521;
-    --glass: rgba(15, 19, 16, 0.66);
-    --glass-strong: rgba(15, 19, 16, 0.88);
+  /* ═══════════════════════════════════════════
+     THE DAYLIGHT VIEWING (light)
+  ═══════════════════════════════════════════ */
+  [data-theme='light'] {
+    --bg: #fafafa;
+    --bg-tint: #f2f2f4;
+    --surface: #ffffff;
+    --surface-2: #f7f7f8;
+    --surface-3: #eeeeef;
+    --glass: rgba(255, 255, 255, 0.76);
+    --glass-strong: rgba(255, 255, 255, 0.93);
 
-    --ink: #ede6d8;
-    --ink-soft: #cfc6b5;
-    --muted: #9b9384;
-    --faint: #6f695d;
+    --ink: #0b0b0c;
+    --ink-soft: #36363b;
+    --muted: #6b6b74;
+    --faint: #9a9aa3;
 
-    --line: rgba(237, 230, 216, 0.11);
-    --line-strong: rgba(237, 230, 216, 0.22);
-    --line-glow: rgba(237, 230, 216, 0.06);
+    --line: rgba(11, 11, 12, 0.11);
+    --line-strong: rgba(11, 11, 12, 0.2);
+    --line-glow: rgba(255, 255, 255, 0.9);
 
-    --accent: #e07a45;
-    --accent-strong: #f09a6b;
-    --accent-soft: rgba(224, 122, 69, 0.14);
-    --accent-ink: #1a0e07;
+    /* mint needs to go darker to hold contrast on white */
+    --accent: #00a877;
+    --accent-strong: #008a61;
+    --accent-soft: rgba(0, 168, 119, 0.1);
+    --accent-ink: #ffffff;
 
-    --gilt: #d9b478;
-    --gilt-2: #e8cd99;
-    --gilt-3: #f7e8c8;
-    --gilt-wash: rgba(217, 180, 120, 0.09);
+    --gilt: #00996d;
+    --gilt-2: #00b37c;
+    --gilt-3: #5cf7c4;
+    --gilt-wash: rgba(0, 168, 119, 0.08);
 
-    --sage: #82c4ab;
-    --sage-soft: rgba(130, 196, 171, 0.12);
+    --sage: #5b4bd6;
+    --sage-soft: rgba(91, 75, 214, 0.1);
 
-    --live: #ef7f63;
-    --live-soft: rgba(239, 127, 99, 0.14);
-    --win: #82c4ab;
-    --win-soft: rgba(130, 196, 171, 0.14);
+    --live: #d6382f;
+    --live-soft: rgba(214, 56, 47, 0.09);
+    --win: #00996d;
+    --win-soft: rgba(0, 153, 109, 0.1);
 
-    --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.035) inset, 0 2px 8px rgba(0, 0, 0, 0.35),
-      0 12px 32px -16px rgba(0, 0, 0, 0.7);
-    --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 4px 14px rgba(0, 0, 0, 0.4),
-      0 32px 70px -30px rgba(0, 0, 0, 0.85);
-    --shadow-pop: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 6px 18px rgba(0, 0, 0, 0.45),
-      0 50px 100px -40px rgba(0, 0, 0, 0.9);
+    --shadow-1: 0 1px 2px rgba(12, 14, 18, 0.05), 0 6px 18px -12px rgba(12, 14, 18, 0.16);
+    --shadow-2: 0 1px 3px rgba(12, 14, 18, 0.06), 0 18px 44px -24px rgba(12, 14, 18, 0.24);
+    --shadow-pop: 0 2px 6px rgba(12, 14, 18, 0.07), 0 40px 80px -34px rgba(12, 14, 18, 0.3);
 
-    --grain-opacity: 0.055;
-    --grain-blend: overlay;
-    --aurora-1: rgba(217, 180, 120, 0.3);
-    --aurora-2: rgba(224, 122, 69, 0.22);
-    --aurora-3: rgba(47, 107, 88, 0.34);
-    --spot: rgba(217, 180, 120, 0.07);
+    --glow-accent: 0 0 0 1px rgba(0, 168, 119, 0.28), 0 6px 22px -8px rgba(0, 168, 119, 0.4);
+    --glow-soft: 0 0 18px -6px rgba(0, 168, 119, 0.3);
+
+    --grain-opacity: 0;
+    --grain-blend: multiply;
+    --aurora-1: rgba(0, 229, 160, 0.22);
+    --aurora-2: rgba(124, 107, 245, 0.14);
+    --aurora-3: rgba(0, 229, 160, 0.12);
+    --spot: rgba(255, 255, 255, 0.7);
+    --dust: rgba(0, 168, 119, 0.4);
+    --card-sheen: rgba(0, 168, 119, 0.07);
+    --scrim: rgba(18, 18, 20, 0.55);
   }
 }

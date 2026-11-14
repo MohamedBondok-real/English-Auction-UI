@@ -4,22 +4,21 @@ import { useRaf } from '../state/hooks';
 
 /**
  * Two ambient layers, both cheap:
- *  · Aurora — CSS-only drifting radial washes behind the page.
- *  · GiltDust — canvas of ~44 slow motes, paused when the tab is hidden
- *    or the pointer is idle for a long while. Single rAF, no React churn.
+ *  · Aurora — CSS-only drifting radial washes; mint and violet.
+ *  · MintDust — canvas of ~50 slow motes, paused when the tab is hidden.
+ *    Single rAF, no React churn, no grain overlay in the new mood.
  */
 export function Ambient() {
   return (
     <div className="ambient" aria-hidden="true">
       <div className="ambient__aurora" />
       <div className="ambient__aurora ambient__aurora--b" />
-      <GiltDust />
-      <div className="ambient__grain" />
+      <MintDust />
     </div>
   );
 }
 
-function GiltDust() {
+function MintDust() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
   const state = useRef({
@@ -95,8 +94,8 @@ function GiltDust() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = isDark
-        ? `rgba(232, 205, 153, ${alpha})`
-        : `rgba(154, 117, 38, ${alpha * 0.55})`;
+        ? `rgba(0, 229, 160, ${alpha * 0.8})`
+        : `rgba(0, 168, 119, ${alpha * 0.5})`;
       ctx.fill();
     }
   });
